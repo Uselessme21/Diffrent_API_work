@@ -3,6 +3,12 @@
 body {
   margin: 0;
   box-sizing: border-box;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  background-image: url(./pages/assets/one-piece-768x432.webp);
+}
+body::-webkit-scrollbar{
+    display: none;
 }
 /* CSS for header */
 
@@ -66,3 +72,201 @@ li.active>a{
 }
 /* nav bar end */
 
+
+    .container-fluid1{
+    position: relative;
+    width: auto;
+    min-height: 90vh;
+    overflow: hidden;
+    background: fixed;
+    background-image: url(./pages/assets/1000sunny.jpg);
+    background-clip: border-box;
+    padding: 90px 0;
+    background-size: cover;
+   
+    
+    }
+    .container-fluid1 > .container{
+        height: 100%;
+        width: 100%;
+        margin: auto;
+        text-align: center;
+        justify-content: center;
+        background-image: url(./pages/assets/One-Piece-Strawhat.png);
+        background-repeat: no-repeat;
+         background-position: center center;
+         background-size:contain;
+        
+         animation: slidein 30s linear infinite ;
+         /* animation: animate1  10s linear infinite ; */
+    }
+    @keyframes slidein {
+        from {
+          /* pushes the sun down past the viewport */
+          transform: translateY(90vh);
+        }
+        to {
+          /* returns the sun to its default position */
+          transform: translateY(-40vh);
+        }
+        0%{
+            background-position: 0;
+        }
+        100%{
+            background-position: 1930px;
+        }
+      }
+    /* .bg{
+        z-index: 2;
+        display: flex;
+        justify-content: space-between;
+        height: 100%;
+        width: 100%;
+    }
+    .container-fluid1> .bg> .bgs{
+        height: 100%;
+        width: 100%;
+        margin: auto;
+        
+        background-image: url(./pages/assets/ACE);
+       
+    } */
+    .container-fluid1 > .container>h1 {
+       font-size: 200px;
+       font-weight:bolder;
+      
+       /* background-clip: text;
+       -webkit-background-clip: text;
+       color: transparent; */
+    }
+    .container-fluid1 > .container>h1>span:nth-child(1) {
+       
+        background-image: url(./pages/assets/gol.d_roger);
+        background-size: cover;
+        
+       background-clip: text;
+       -webkit-background-clip: text;
+       color: transparent;
+     }
+     .container-fluid1 > .container>h1>span:nth-child(2) {
+      
+        background-image: url(./pages/assets/one_piece-14-3668662704);
+        background-size: cover;
+        
+       background-clip: text;
+       -webkit-background-clip: text;
+       color: transparent;
+     }
+     .container-fluid1 > .container>h1>span:nth-child(3) {
+        
+        background-image: url(./pages/assets/robin.jpg);
+        background-size: cover;
+        
+       background-clip: text;
+       -webkit-background-clip: text;
+       color: transparent;
+     }
+     .container-fluid1 > .container>h1>span:nth-child(4) {
+        
+        background-image: url(./pages/assets/one-piece-monkey-d-luffy-f0.jpg);
+        background-size: cover;
+        
+       background-clip: text;
+       -webkit-background-clip: text;
+       color: transparent;
+     }
+     @media  screen and (max-width: 1233px) {
+        .container-fluid1 > .container{
+        
+            background-position: top center;
+         
+         
+       }
+     }
+    @media  screen and (max-width: 608px) {
+        .container-fluid1 > .container>h1>span:nth-child(4) {
+        
+          
+           color: transparent;
+         }
+         .container-fluid1 > .container>h1{
+            font-size: 99px;
+           
+             background-position: top center;
+          
+          
+        }
+    }
+    
+    /* waves    */
+    
+      section{
+        position: relative;
+        width: 100%;
+        height: 100vh;
+      }
+      section {
+        position: relative;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-attachment: fixed;
+    
+      }
+      section .waves {
+        position: absolute;
+        width: 100%;
+        height: 210px;
+        bottom: 0;
+        left: 0;
+        background: fixed;
+        background: url(./pages/assets/wave-bot.png);
+        background-blend-mode:screen;
+        animation: animate1  10s linear  infinite ;
+         
+          }
+          section .waves::before{
+            content: '';
+            width: 100%;
+            height: 210px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background: fixed;
+            background: url(./pages/assets/wave-bot.png);
+            opacity: 0.3;
+            animation: animate2  10s linear  infinite ;
+          }
+    
+          section .waves::after{
+            content: '';
+            width: 100%;
+            height: 210px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background: fixed;
+            background: url(./pages/assets/wave-bot.png);
+            opacity: 0.5;
+            animation-delay: -5s;
+            animation: animate1  20s linear  infinite ;
+          }
+          @keyframes animate1{
+            0%{
+                background-position: 0;
+            }
+            100%{
+                background-position: 1930px;
+            }
+          }
+    
+          @keyframes animate2{
+            0%{
+                background-position: 1930px;
+            }
+            100%{
+                background-position: 0;
+            }
+          }

@@ -12,7 +12,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #000;
+    background-color: #ffffff;
 }
 /* nav baar */
 nav {
@@ -68,6 +68,7 @@ li.active>a{
     background-color: #232323;
     border-radius: 12px;
     padding: 28px;
+    color: white;
 }
 
 .search-box{
