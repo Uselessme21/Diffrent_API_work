@@ -1,5 +1,5 @@
-const API_KEY = "d3e7f7974d4242908e6b7d3248e81ff5";
-const url = "https://newsapi.org/v2/everything?q=";
+const url = 'https://newsdata.io/api/1/news?apikey=pub_272507cb7948e32211c26c08e2896c71130b7';
+
 // on window load fetchNews will be caalled and data will be fetched and rendered
 window.addEventListener("load", () => fetchNews("India"));
 
@@ -11,9 +11,17 @@ function reload() {
 
 // to fetch the news with query parameters
 async function fetchNews(query) {
-    const res = await fetch(`${url}${query}&apiKey=${API_KEY}`);
-    const data = await res.json();
-    bindData(data.articles);
+    try {
+        const response = await fetch(url+'&q='+query);
+        const result = await response.json();
+        console.log(result.results);
+        const data=result.results
+        console.log(data);
+        bindData(data);
+    } catch (error) {
+        console.error(error);
+    }
+   
 }
 
 
@@ -26,7 +34,8 @@ function bindData(articles) {
 
     articles.forEach((article) => {
         // returning the news if there is no image
-        if (!article.urlToImage) return;
+        // if (!article.image_url
+        //     ) return;
         // clone the the node from template
         const cardClone = newsCardTemplate.content.cloneNode(true);
         // calling the  function to fill the property
@@ -44,21 +53,21 @@ function fillDataInCard(cardClone, article) {
     const newsSource = cardClone.querySelector("#news-source");
     const newsDesc = cardClone.querySelector("#news-desc");
 
-    newsImg.src = article.urlToImage;
+    newsImg.src = article.image_url?article.image_url:'./assets/logo.png'   ;
     newsTitle.innerHTML = article.title;
     newsDesc.innerHTML = article.description;
 
     // getting date and converting it into string according to time zone
-    const date = new Date(article.publishedAt).toLocaleString("en-US", {
+    const date = new Date(article.pubDate
+        ).toLocaleString("en-US", {
         timeZone: "Asia/Jakarta",
     });
 
     // 
-    newsSource.innerHTML = `${article.source.name} · ${date}`;
+    newsSource.innerHTML = `${article.source_id
+    } · ${date}`;
 // when card is clicked it will send you to the original article source page
-    cardClone.firstElementChild.addEventListener("click", () => {
-        window.open(article.url, "_blank");
-    });
+  
 }
 
 let curSelectedNav = null;
