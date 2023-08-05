@@ -1,10 +1,8 @@
-// Titles: https://omdbapi.com/?s=thor&page=1&apikey=fc1fef96
-// details: http://www.omdbapi.com/?i=tt3896198&apikey=fc1fef96
 
 const movieSearchBox = document.getElementById('movie-search-box');
 const searchList = document.getElementById('search-list');
 const resultGrid = document.getElementById('result-grid');
-
+const norm = document.getElementById('norm');
 // load movies from API
 async function loadMovies(searchTerm){
     const URL = `https://omdbapi.com/?s=${searchTerm}&page=1&apikey=9780a8f8`;
@@ -13,6 +11,42 @@ async function loadMovies(searchTerm){
     // console.log(data.Search);
     if(data.Response == "True") displayMovieList(data.Search);
 }
+// n
+async function loadallMovies(){
+    const URL = `https://omdbapi.com/?s=hindi&page=1&apikey=9780a8f8`;
+    const res = await fetch(`${URL}`);
+    const data = await res.json();
+    console.log(data.Search);
+    if(data.Response == "True") displayMovies(data.Search);
+}
+function displayMovies(movies){
+    norm.innerHTML = "";
+    for(let idx = 0; idx < movies.length; idx++){
+        let movieListItem = document.createElement('div');
+        movieListItem.dataset.id = movies[idx].imdbID; // setting movie id in  data-id
+        movieListItem.classList.add('search-list-item');
+        if(movies[idx].Poster != "N/A")
+            moviePoster = movies[idx].Poster;
+        else 
+            moviePoster = "image_not_found.png";
+// console.log(movies[0].Title)
+        movieListItem.innerHTML = `<div class = "movie-poster">
+        <img src = "${(movies[idx].Poster != "N/A") ? movies[idx].Poster : "image_not_found.png"}" alt = "movie poster">
+    </div>
+    <div class = "movie-info">
+        <h3 class = "movie-title">${movies[idx].Title}</h3>
+        <ul class = "movie-misc-info">
+            <li class = "year">Year: ${movies[idx].Year}</li>
+        </ul>
+        <p class = "genre" id= ${movies[idx].imdbID}><b>more:</b></p>
+    </div>
+        `;
+        resultGrid.appendChild(movieListItem);
+    }
+    loadMovieDetails();
+}
+loadallMovies()
+// old
 
 function findMovies(){
     let searchTerm = (movieSearchBox.value).trim();
@@ -92,3 +126,5 @@ window.addEventListener('click', (event) => {
         searchList.classList.add('hide-search-list');
     }
 });
+
+

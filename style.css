@@ -94,7 +94,7 @@ li.active>a{
         justify-content: center;
         background-image: url(./pages/assets/One-Piece-Strawhat.png);
         background-repeat: no-repeat;
-         background-position: center center;
+        background-position: center center;
          background-size:contain;
         
          animation: slidein 30s linear infinite ;
